@@ -1,22 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 import StarIcon from "@material-ui/icons/Star";
-import StarHalfIcon from "@material-ui/icons/StarHalf";
 import StarOutlineIcon from "@material-ui/icons/StarOutline";
 
-function Product() {
+function Product({ title, price, rating, image, id }) {
   return (
     <Container>
-      <Title>Razer Kraken Kitty</Title>
-      <Price>$149</Price>
+      <Title>{title}</Title>
+      <Price>${price}</Price>
       <Rating>
+        {/* <StarIcon />
         <StarIcon />
         <StarIcon />
         <StarIcon />
-        <StarIcon />
-        <StarHalfIcon />
+        <StarHalfIcon /> */}
+        {Array(rating)
+          .fill()
+          .map((rating) => (
+            <StarIcon />
+          ))}
       </Rating>
-      <Image src="https://images-na.ssl-images-amazon.com/images/I/71%2BfI6aXVPL._AC_SL1500_.jpg" />
+      <Image src={image} />
       <ActionSection>
         <AddToCartButton>Add to Card</AddToCartButton>
       </ActionSection>
