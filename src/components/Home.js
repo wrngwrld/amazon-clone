@@ -32,6 +32,7 @@ function Home() {
             price={data.product.price}
             rating={data.product.rating}
             image={data.product.image}
+            id={data.id}
           />
         ))}
       </Content>
@@ -59,7 +60,4 @@ const Content = styled.div`
   padding-right: 10px;
   margin-top: -350px;
   display: flex;
-
-  max-width: 50vw;
-  margin: -350px auto;
 `;

@@ -2,8 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import StarIcon from "@material-ui/icons/Star";
 import StarOutlineIcon from "@material-ui/icons/StarOutline";
+import { db } from "../firebase";
 
 function Product({ title, price, rating, image, id }) {
+  const addToCart = () => {
+    const cartItem = db.collection("cartitems").doc(id);
+    cartItem.get().then((doc) => {
+      if (doc.exists) {
+        cartItem.update({
+          quantity: doc.data().quantity + 1,
+        });
+      } else {
+        db.collection("cartitems").doc(id).set({
+          name: title,
+          image: image,
+          price: price,
+          quantity: 1,
+        });
+      }
+    });
+  };
+
   return (
     <Container>
       <Title>{title}</Title>
@@ -22,7 +41,7 @@ function Product({ title, price, rating, image, id }) {
       </Rating>
       <Image src={image} />
       <ActionSection>
-        <AddToCartButton>Add to Card</AddToCartButton>
+        <AddToCartButton onClick={addToCart}>Add to Card</AddToCartButton>
       </ActionSection>
     </Container>
   );
@@ -74,4 +93,5 @@ const AddToCartButton = styled.button`
   border-radius: 2px;
   -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.14);
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.14);
+  cursor: pointer;
 `;
