@@ -48,7 +48,7 @@ const Container = styled.div`
 `;
 
 const Banner = styled.div`
-  background-image: url("/img/Hero.jpg");
+  background-image: url("https://images-eu.ssl-images-amazon.com/images/G/03/kindle/journeys/YzkyZTQzZGQt/YzkyZTQzZGQt-MTUxZWE4MjIt-w1500._CB658847766_.jpg");
   min-height: 600px;
   background-position: center;
   background-size: cover;
@@ -59,5 +59,8 @@ const Content = styled.div`
   padding-left: 10px;
   padding-right: 10px;
   margin-top: -350px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-wrap: wrap;
   display: flex;
 `;

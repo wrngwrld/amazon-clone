@@ -56,6 +56,7 @@ const Container = styled.div`
   padding: 20px;
   margin: 10px;
   max-height: 400px;
+  min-width: 350px;
   display: flex;
   flex-direction: column;
   -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.14);
